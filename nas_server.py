@@ -177,7 +177,6 @@ class NasHTTPServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                             logger.log(logging.DEBUG, "login response to %s", client_address)
                             logger.log(logging.DEBUG, ret)
 
-                            ret = self.dict_to_str(ret)
                         else:
                             # user is banned
                             ret.update({
