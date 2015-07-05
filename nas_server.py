@@ -187,7 +187,7 @@ class NasHTTPServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                             logger.log(logging.DEBUG, "login response to %s (user banned)", self.client_address)
                             logger.log(logging.DEBUG, ret)
 
-                        ret = self.dict_to_str(ret)
+                    ret = self.dict_to_str(ret)
 
                 elif action == "SVCLOC" or action == "svcloc": # Get service based on service id number
                     ret["returncd"] = "007"
