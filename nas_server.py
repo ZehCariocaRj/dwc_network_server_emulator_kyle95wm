@@ -184,7 +184,7 @@ class NasHTTPServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                                 "returncd": "3912",
                                 "locator": "gamespy.com",
                             })
-                            logger.log(logging.DEBUG, "login response to %s (user banned)", self.client_address)
+                            logger.log(logging.DEBUG, "login response to %s (user banned)", client_address)
                             logger.log(logging.DEBUG, ret)
 
                     ret = self.dict_to_str(ret)
