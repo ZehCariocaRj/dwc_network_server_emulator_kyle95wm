@@ -169,9 +169,9 @@ class GamespyDatabase(object):
 
         return valid_user
 
-    def check_user_enabled(self, userid, gsbrcd):
+    def check_user_enabled(self, userid):
         with Transaction(self.conn) as tx:
-            row = tx.queryone("SELECT enabled FROM users WHERE userid = ? AND gsbrcd = ?", (userid, gsbrcd))
+            row = tx.queryone("SELECT enabled FROM users WHERE userid = ?", (userid))
             enabled = int(row[0])
         return enabled > 0
     
