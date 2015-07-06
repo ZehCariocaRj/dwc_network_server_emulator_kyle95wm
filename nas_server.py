@@ -162,6 +162,24 @@ class NasHTTPServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                             "retry": "1",
                             "reason": "User's console is banned."
                         }
+                    elif self.server.db.is_ingamesn_banned(post):
+                        logger.log(logging.DEBUG, "login denied for banned Mii name"+str(post))
+                        ret = {
+                            "datetime": time.strftime("%Y%m%d%H%M%S"),
+                            "returncd": "3916",
+                            "locator": "gamespy.com",
+                            "retry": "1",
+                            "reason": "Mii name is black listed"
+                        }
+                    elif self.server.db.is_devname_banned(post):
+                        logger.log(logging.DEBUG, "login denied for banned device name"+str(post))
+                        ret = {
+                            "datetime": time.strftime("%Y%m%d%H%M%S"),
+                            "returncd": "3916",
+                            "locator": "gamespy.com",
+                            "retry": "1",
+                            "reason": "device name is black listed"
+                        }
                     else:
                         challenge = utils.generate_random_str(8)
                         post["challenge"] = challenge
