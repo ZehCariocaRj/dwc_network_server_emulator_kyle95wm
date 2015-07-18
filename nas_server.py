@@ -162,22 +162,23 @@ class NasHTTPServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                             "retry": "1",
                             "reason": "User's console is banned."
                         }
-                    elif not self.server.db.pending(post):
-                        logger.log(logging.DEBUG, "Login denied - Unknown console"+str(post))
-                        ret = {
-                            "datetime": time.strftime("%Y%m%d%H%M%S"),
-                            "returncd": "3921",
-                            "locator": "gamespy.com",
-                            "retry": "1",
-                        }
-                    elif not self.server.db.registered(post):
-                        logger.log(logging.DEBUG, "Login denied - console pending"+str(post))
-                        ret = {
-                            "datetime": time.strftime("%Y%m%d%H%M%S"),
-                            "returncd": "3888",
-                            "locator": "gamespy.com",
-                            "retry": "1",
-                        }
+#Un0comment the lines below to activate console registration
+                    #elif not self.server.db.pending(post):
+                        #logger.log(logging.DEBUG, "Login denied - Unknown console"+str(post))
+                        #ret = {
+                            #"datetime": time.strftime("%Y%m%d%H%M%S"),
+                            #"returncd": "3921",
+                            #"locator": "gamespy.com",
+                            #"retry": "1",
+                        #}
+                    #elif not self.server.db.registered(post):
+                        #logger.log(logging.DEBUG, "Login denied - console pending"+str(post))
+                        #ret = {
+                            #"datetime": time.strftime("%Y%m%d%H%M%S"),
+                            #"returncd": "3888",
+                            #"locator": "gamespy.com",
+                            #"retry": "1",
+                        #}
                     else:
                         challenge = utils.generate_random_str(8)
                         post["challenge"] = challenge
