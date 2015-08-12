@@ -170,7 +170,7 @@ class GamespyDatabase(object):
         return valid_user
 
     def check_user_enabled(self, userid, gsbrcd):
-      if 'csnum' in postdata:
+      if 'gsbrcd' in postdata:
          with Transaction(self.conn) as tx:
              row = tx.queryone("SELECT enabled FROM users WHERE userid = ? AND gsbrcd = ?", (userid, gsbrcd))
              enabled = int(row[0])
